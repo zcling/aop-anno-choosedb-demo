@@ -24,6 +24,7 @@ public class ChooseDataSource extends AbstractRoutingDataSource {
     }
 
     // 设置方法名前缀对应的数据源
+    // 这个是用过set方法为methodType属性注入值，注入的配置是在spring-db.xml文件中配置的
     public void setMethodType(Map<String, String> map) {
         for (String key : map.keySet()) {
             List<String> v = new ArrayList<String>();
