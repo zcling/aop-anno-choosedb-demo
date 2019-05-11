@@ -1,6 +1,7 @@
 package com.xuliugen.choosedb.demo.controller;
 
 import com.xuliugen.choosedb.demo.mybatis.model.User;
+import com.xuliugen.choosedb.demo.service.AnnotaionService;
 import com.xuliugen.choosedb.demo.service.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,8 @@ public class UserController {
 
     @Inject
     private IUserService userService;
+    @Inject
+    private AnnotaionService annotaionService;
 
     //http://localhost:8080/user/select.do
     @ResponseBody
@@ -31,7 +34,14 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "/add.do", method = RequestMethod.GET)
     public String add() {
-        boolean isOk = userService.addUser(new User("333", "444"));
+        boolean isOk = userService.addUser(new User("666", "999"));
         return isOk == true ? "shibai" : "chenggong";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/anno.do", method = RequestMethod.GET)
+    public String anno(String str) {
+        annotaionService.getAnnoMessage(str);
+        return "测试注解方式的aop ";
     }
 }

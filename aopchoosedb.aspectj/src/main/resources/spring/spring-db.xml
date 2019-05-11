@@ -2,7 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-                        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+                        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <bean id="statFilter" class="com.alibaba.druid.filter.stat.StatFilter" lazy-init="true">
         <property name="logSlowSql" value="true"/>
@@ -13,8 +14,8 @@
     <bean id="readDataSource" class="com.alibaba.druid.pool.DruidDataSource"
           destroy-method="close" init-method="init" lazy-init="true">
         <property name="driverClassName" value="${driver}"/>
-        <property name="url" value="${url1}"/>
-        <property name="username" value="root"/>
+        <property name="url" value="${jdbc.slave.url}"/>
+        <property name="username" value="myuser"/>
         <property name="password" value="${password}"/>
         <!-- 初始化连接大小 -->
         <property name="initialSize" value="${initialSize}"/>
@@ -47,9 +48,9 @@
     <bean id="writeDataSource" class="com.alibaba.druid.pool.DruidDataSource"
           destroy-method="close" init-method="init" lazy-init="true">
         <property name="driverClassName" value="${driver}"/>
-        <property name="url" value="${url}"/>
+        <property name="url" value="${jdbc.master.url}"/>
         <property name="username" value="root"/>
-        <property name="password" value="${password}"/>
+        <property name="password" value="${password1}"/>
         <property name="initialSize" value="${initialSize}"/>
         <property name="maxActive" value="${maxActive}"/>
         <property name="minIdle" value="${minIdle}"/>

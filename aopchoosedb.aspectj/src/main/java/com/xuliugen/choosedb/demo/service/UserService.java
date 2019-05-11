@@ -1,5 +1,6 @@
 package com.xuliugen.choosedb.demo.service;
 
+import com.xuliugen.choosedb.demo.anno.MyAnnnotaion;
 import com.xuliugen.choosedb.demo.mybatis.dao.UserMapper;
 import com.xuliugen.choosedb.demo.mybatis.model.User;
 
